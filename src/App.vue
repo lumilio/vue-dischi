@@ -34,6 +34,6 @@ export default {
 @import './assets/scss/variables.scss';
 #app{
     background-color: $sie-color-1;
-    height: 100vh;
+    min-height: 100vh;
 }
 </style>
