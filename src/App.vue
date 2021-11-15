@@ -1,66 +1,39 @@
 <template>
   <div id="app">
       <HeaderBanner/>
-
-      
-
+      <CardsContainer/>
   </div>
+  
 </template>
 
-
-
-
+/* -------------------------------------------------------------------------- */
 
 <script>
+//-----------------utilities--------------------
+//none
+//--------------------------------------------
+//---------------components-------------------
+import HeaderBanner from './components/Header.vue';
+import CardsContainer from './components/Boxcontainer.vue';
+//--------------------------------------------
 
-
-// utilities
-import axios from 'axios';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-import 'bootstrap/dist/css/bootstrap.css';
-
-// components
-import HeaderBanner from './components/Header.vue'
 
 
 export default {
-  name: 'App',
-  components: {
-      HeaderBanner, 
-  },
-
-
-    data() {
-        return {
-            cdlist: [],
-            error: 'tutto ok',
-        };
+    name: 'App',
+    components: {
+        HeaderBanner, 
+        CardsContainer,
     },
-
-
-
-    mounted() {
-        axios
-        .get("https://flynn.boolean.careers/exercises/api/array/music")
-        .then(myResp => {this.cdlist.push(myResp.data.response)}).catch(e => {console.error(e, "OPS!"); this.error = 'errore!';})    
-        console.log(this.cdlist);
-        console.log(this.error);
-    }
 }
-
-
 </script>
 
-
-
-
-
-
-
-
+/* -------------------------------------------------------------------------- */
 
 <style lang="scss">
-
-    
-
+@import './assets/scss/variables.scss';
+#app{
+    background-color: $sie-color-1;
+    height: 100vh;
+}
 </style>
