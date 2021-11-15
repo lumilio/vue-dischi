@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+      <HeaderBanner/>
 
-      <div  class="bg-dark">fff</div>
+      
 
   </div>
 </template>
@@ -12,13 +13,21 @@
 
 <script>
 
+
+// utilities
 import axios from 'axios';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+// components
+import HeaderBanner from './components/Header.vue'
+
+
 export default {
   name: 'App',
-  components: {},
+  components: {
+      HeaderBanner, 
+  },
 
 
     data() {
@@ -32,7 +41,7 @@ export default {
 
     mounted() {
         axios
-        .get("https://flynn.boolean.careers/exercises/api/random/mail")
+        .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then(myResp => {this.cdlist.push(myResp.data.response)}).catch(e => {console.error(e, "OPS!"); this.error = 'errore!';})    
         console.log(this.cdlist);
         console.log(this.error);
@@ -49,6 +58,9 @@ export default {
 
 
 
+
 <style lang="scss">
+
+    
 
 </style>
