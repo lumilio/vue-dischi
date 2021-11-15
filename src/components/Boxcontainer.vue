@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid d-flex justify-content-center">
         <div class="container d-flex justify-content-center">
-            <div v-if='CardArrey.length == 10' class="Cardbox">
+            <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
                 <CardLayout v-for='Card in CardArrey' v-bind:key="Card.id" 
                 :author="Card.author"
                 :poster="Card.poster"
@@ -38,13 +38,19 @@ export default {
     data() {
         return {
             CardArrey: [],
+            loaded:false,
         };
     },
+
+
+
     mounted() {
+        setTimeout(() => { this.loaded = true; }, 700); //---tempo di caricamento finto
+
         axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then(myResp => {this.CardArrey = myResp.data.response;})
-        .catch(e => {console.error(e, 'errore di caricamento');})  
+        .catch(e => {console.error(e, 'errore di caricamento');})
     },
 }
 </script>
