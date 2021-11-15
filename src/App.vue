@@ -25,7 +25,6 @@ export default {
         HeaderBanner, 
         CardsContainer,
     },
-    props: {},
 }
 </script>
 
