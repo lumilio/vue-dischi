@@ -38,14 +38,13 @@ export default {
     data() {
         return {
             CardArrey: [],
-            error: 'tutto ok',
         };
     },
     mounted() {
         axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then(myResp => {this.CardArrey = myResp.data.response;})
-        .catch(e => {console.error(e, "OPS!"); this.error = 'errore!';})  
+        .catch(e => {console.error(e, 'errore di caricamento');})  
     },
 }
 </script>
