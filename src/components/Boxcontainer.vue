@@ -41,7 +41,9 @@ export default {
     created() {
         axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
-        .then(myResp => {this.CardArrey.push(myResp.data.response)}).catch(e => {console.error(e, "OPS!"); this.error = 'errore!';})    
+        .then(myResp => {this.CardArrey = myResp.data.response;})
+        .catch(e => {console.error(e, "OPS!"); this.error = 'errore!';})  
+        
         console.log(this.CardArrey);
         console.log(this.error);
     },
