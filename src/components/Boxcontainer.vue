@@ -1,6 +1,8 @@
 <template>
     <div class="container-fluid d-flex justify-content-center">
         <div class="container d-flex justify-content-center">
+            <BoxSaerchArtista/>
+            <BoxSaerchGenere/>
             <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
                 <CardLayout v-for='Card in CardArrey' v-bind:key="Card.id" 
                 :author="Card.author"
@@ -25,6 +27,8 @@ import axios from 'axios';
 //--------------------------------------------
 //---------------components-------------------
 import CardLayout from './Card.vue';
+import BoxSaerchArtista from './SaerchBoxArtista.vue';
+import BoxSaerchGenere from './SaerchBoxGenere.vue';
 //--------------------------------------------
 
 
@@ -33,6 +37,9 @@ export default {
     name: 'C2',
     components: {
         CardLayout,
+        BoxSaerchArtista,
+        BoxSaerchGenere,
+
     },
     props: {},
     data() {
