@@ -36,7 +36,7 @@ import BoxSaerchGenere from './SaerchBoxGenere.vue';
 
 
 export default {
-    name: 'C2',
+    name: '',
     components: {
         CardLayout,
         BoxSaerchArtista,
@@ -50,17 +50,16 @@ export default {
             loaded:false,
         };
     },
-
-
-
+    methods: {},
+    computed: {},
     mounted() {
         setTimeout(() => { this.loaded = true; }, 700); //---tempo di caricamento finto
-
         axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then(myResp => {this.CardArrey = myResp.data.response;})
         .catch(e => {console.error(e, 'errore di caricamento');})
     },
+
 }
 </script>
 
@@ -68,10 +67,9 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/scss/variables.scss';
-
 .Cardbox{
     display: flex;
-    margin-top: 30px;
+    margin-top: 10px;
     justify-content: center;
     flex-wrap: wrap;
 }

@@ -25,6 +25,11 @@ export default {
         HeaderBanner, 
         CardsContainer,
     },
+/*  props: {},
+    data() {},
+    methods: {},
+    computed: {},
+    mounted() {}, */
 }
 </script>
 

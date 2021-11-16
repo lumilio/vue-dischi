@@ -20,9 +20,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 export default {
-    name: 'C1',
+    name: '',
     components: {},
     props: {},
+/*  data() {},
+    methods: {},
+    computed: {},
+    mounted() {}, */
 }
 </script>
 
