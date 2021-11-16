@@ -3,10 +3,10 @@
         <div class="container d-flex align-items-center flex-column">
             <div class="box-form container">
                 <BoxSaerchArtista v-on:filterChange='changeFilter'/>
-                <BoxSaerchGenere v-on:/>
+                <BoxSaerchGenere v-on:filterChange='changeFilter'/>
             </div>
             <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
-                <CardLayout v-for='Card in CardArrey' v-bind:key="Card.id" 
+                <CardLayout v-for='Card in ShowCard' v-bind:key="Card.id" 
                 :author="Card.author"
                 :poster="Card.poster"
                 :title="Card.title"
@@ -46,16 +46,34 @@ export default {
     props: {},
     data() {
         return {
-            CardArrey: [],
+            CardArrey:[],
+            ShowCard:[],
             loaded:false,
         };
     },
     methods:{
         changeFilter(selected) {
-            console.log(selected);
+            this.ShowCard = [] ;
+            for (let i = 0; i < this.CardArrey.length; i++) {
+                const element = this.CardArrey[i];
+                if(element.author == selected){
+                    this.ShowCard.push(element)
+                }
+                else if(selected == 'All') {
+                    this.ShowCard.push(element)
+                } 
+            }
+/*             for (let i = 0; i < this.CardArrey.length; i++) {
+                const element = this.CardArrey[i];
+                if(element.author == selected){
+                    this.ShowCard.push(element)
+                }
+                else if(selected == 'All') {
+                    this.ShowCard.push(element)
+                } 
+            } */
         }
     },
-    computed: {},
     mounted() {
         setTimeout(() => { this.loaded = true; }, 700); //---tempo di caricamento finto
         axios
