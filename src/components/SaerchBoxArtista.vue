@@ -3,9 +3,9 @@
         <div class="container">
 
             <form>
-                <label for="x">Choose a car:</label>
-                <select name="x" id="x">
-                    <option v-for="Card in CardArreyChild" :key='Card.id' value="Card.author">{{Card.author}}</option>
+                <label >Choose a car:</label>
+                <select v-model="selected" @change="showCD(selected)">
+                    <option v-for="Card in CardArreyChild" :key='Card.id' :value="Card.author"> {{Card.author}}</option>
                 </select>
             </form>
 
@@ -33,9 +33,15 @@ export default {
     props: {},
     data(){
         return {
-            CardArreyChild:[]
+            CardArreyChild:[],
+            selected: 'All'
         };
-    },   
+    },
+    methods:{
+        showCD() {
+            this.$emit('filterChange',this.selected);
+        }
+    },  
     mounted(){
         setTimeout(() => {this.CardArreyChild = this.$parent.$data.CardArrey}, 700);
     }

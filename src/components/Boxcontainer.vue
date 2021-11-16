@@ -2,8 +2,8 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="container d-flex align-items-center flex-column">
             <div class="box-form container">
-                <BoxSaerchArtista :arrey='CardArrey'/>
-                <BoxSaerchGenere :arrey='CardArrey'/>
+                <BoxSaerchArtista v-on:filterChange='changeFilter'/>
+                <BoxSaerchGenere v-on:/>
             </div>
             <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
                 <CardLayout v-for='Card in CardArrey' v-bind:key="Card.id" 
@@ -34,9 +34,6 @@ import BoxSaerchGenere from './SaerchBoxGenere.vue';
 //--------------------------------------------
 
 
-//inviare dati arrey a componente figlio
-
-
 
 export default {
     name: '',
@@ -53,7 +50,11 @@ export default {
             loaded:false,
         };
     },
-    methods: {},
+    methods:{
+        changeFilter(selected) {
+            console.log(selected);
+        }
+    },
     computed: {},
     mounted() {
         setTimeout(() => { this.loaded = true; }, 700); //---tempo di caricamento finto
