@@ -3,9 +3,9 @@
         <div class="container">
 
             <form>
-                <label for="x">Choose a genere:</label>
+                <label for="x">Choose a car:</label>
                 <select name="x" id="x">
-                    <option value="volvo">Volvo</option>
+                    <option v-for="genere in GeneriArrey" :key='genere.id' value="Card">{{genere}}</option>
                 </select>
             </form>
 
@@ -33,13 +33,23 @@ export default {
     props: {},
     data(){
         return {
-            theArrey:[]
+            CardArreyChild:[],
+            GeneriArrey:[],
         };
-    },    
+    },
+    methods:{
+        generetorGeneriArrey(){
+            for (let i = 0; i < this.CardArreyChild.length; i++) {
+                const element = this.CardArreyChild[i];
+                if(!(this.GeneriArrey.includes(element.genre))){
+                    this.GeneriArrey.push(element.genre)
+                }
+            }
+        }
+    }, 
     mounted(){
-        this.theArrey = this.$parent.$data.CardArrey;
-        console.log(this.$parent.$data.CardArrey); 
-        console.log(this.theArrey);
+        setTimeout(() => {this.CardArreyChild = this.$parent.$data.CardArrey}, 600);
+        setTimeout(this.generetorGeneriArrey, 600);
     }
 }
 </script>

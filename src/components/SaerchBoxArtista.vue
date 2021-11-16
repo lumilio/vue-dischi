@@ -3,14 +3,12 @@
         <div class="container">
 
             <form>
-                <label for="cars">Choose a car:</label>
-                <select name="cars" id="cars">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                <label for="x">Choose a car:</label>
+                <select name="x" id="x">
+                    <option v-for="Card in CardArreyChild" :key='Card.id' value="Card.author">{{Card.author}}</option>
                 </select>
             </form>
+
             
         </div>
     </div>
@@ -33,10 +31,14 @@ export default {
     name: '',
     components: {},
     props: {},
-/*  data() {},
-    methods: {},
-    computed: {},
-    mounted() {}, */
+    data(){
+        return {
+            CardArreyChild:[]
+        };
+    },   
+    mounted(){
+        setTimeout(() => {this.CardArreyChild = this.$parent.$data.CardArrey}, 700);
+    }
 }
 </script>
 
