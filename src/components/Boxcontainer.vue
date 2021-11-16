@@ -1,8 +1,10 @@
 <template>
     <div class="container-fluid d-flex justify-content-center">
-        <div class="container d-flex justify-content-center">
-            <BoxSaerchArtista/>
-            <BoxSaerchGenere/>
+        <div class="container d-flex align-items-center flex-column">
+            <div class="box-form container">
+                <BoxSaerchArtista/>
+                <BoxSaerchGenere/>
+            </div>
             <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
                 <CardLayout v-for='Card in CardArrey' v-bind:key="Card.id" 
                 :author="Card.author"
@@ -69,9 +71,12 @@ export default {
 
 .Cardbox{
     display: flex;
-    margin-top: 50px;
+    margin-top: 30px;
     justify-content: center;
     flex-wrap: wrap;
+}
+.box-form{
+    margin-top: 30px;
 }
 .loading-box{
     height: 75vh;

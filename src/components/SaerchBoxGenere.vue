@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid d-flex justify-content-center">
         <div class="container">
-            <img src="../assets/img/logo.png" alt="">
+            <form><input type="text" id="Genere-box" name="Genere-box"><br></form>
         </div>
     </div>
 </template>
@@ -30,11 +30,7 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/scss/variables.scss';
-.container-fluid{
-    background-color: $sie-color-2;
-}
-img{
-    width: 35px;
-    margin: 5px;
+input{
+    @include layout-input-1;
 }
 </style>
