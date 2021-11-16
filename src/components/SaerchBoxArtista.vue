@@ -1,7 +1,17 @@
 <template>
     <div class="container-fluid d-flex justify-content-center">
         <div class="container">
-            <form><input type="text" id="Artista-box" name="Artista-box"><br></form>
+
+            <form>
+                <label for="cars">Choose a car:</label>
+                <select name="cars" id="cars">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </form>
+            
         </div>
     </div>
 </template>

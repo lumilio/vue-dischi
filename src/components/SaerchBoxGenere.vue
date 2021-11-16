@@ -1,7 +1,15 @@
 <template>
     <div class="container-fluid d-flex justify-content-center">
         <div class="container">
-            <form><input type="text" id="Genere-box" name="Genere-box"><br></form>
+
+            <form>
+                <label for="x">Choose a genere:</label>
+                <select name="x" id="x">
+                    <option value="volvo">Volvo</option>
+                </select>
+            </form>
+
+            
         </div>
     </div>
 </template>
@@ -23,10 +31,16 @@ export default {
     name: '',
     components: {},
     props: {},
-/*  data() {},
-    methods: {},
-    computed: {},
-    mounted() {}, */
+    data(){
+        return {
+            theArrey:[]
+        };
+    },    
+    mounted(){
+        this.theArrey = this.$parent.$data.CardArrey;
+        console.log(this.$parent.$data.CardArrey); 
+        console.log(this.theArrey);
+    }
 }
 </script>
 

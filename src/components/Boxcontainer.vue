@@ -2,8 +2,8 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="container d-flex align-items-center flex-column">
             <div class="box-form container">
-                <BoxSaerchArtista/>
-                <BoxSaerchGenere/>
+                <BoxSaerchArtista :arrey='CardArrey'/>
+                <BoxSaerchGenere :arrey='CardArrey'/>
             </div>
             <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
                 <CardLayout v-for='Card in CardArrey' v-bind:key="Card.id" 
@@ -34,6 +34,9 @@ import BoxSaerchGenere from './SaerchBoxGenere.vue';
 //--------------------------------------------
 
 
+//inviare dati arrey a componente figlio
+
+
 
 export default {
     name: '',
@@ -59,7 +62,6 @@ export default {
         .then(myResp => {this.CardArrey = myResp.data.response;})
         .catch(e => {console.error(e, 'errore di caricamento');})
     },
-
 }
 </script>
 

@@ -28,6 +28,10 @@ export default {
         title: String,
         year: String,
     }
+/*  data() {},
+    methods: {},
+    computed: {},
+    mounted() {}, */
 }
 </script>
 
