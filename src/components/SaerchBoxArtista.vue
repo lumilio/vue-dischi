@@ -4,7 +4,7 @@
 
             <form>
                 <label class="text-white">Search for Artist :</label>
-                <select v-model="selected" @change="showCD(selected)">
+                <select v-model="selected2" @change="showCD(selected2)">
                     <option value="All" select>All</option>
                     <option v-for="Card in CardArreyChild" :key='Card.id' :value="Card.author" > {{Card.author}}</option>
                 </select>
@@ -35,12 +35,12 @@ export default {
     data(){
         return {
             CardArreyChild:[],
-            selected:'All',
+            selected2:'All',
         };
     },
     methods:{
         showCD() {
-            this.$emit('filterChange',this.selected);
+            this.$emit('filterChange2',this.selected2);
         }
     },  
     mounted(){

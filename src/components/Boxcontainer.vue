@@ -2,8 +2,9 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="container d-flex align-items-center flex-column">
             <div class="box-form container">
-                <BoxSaerchGenere v-on:filterChange='changeFilter'/>
-                <BoxSaerchArtista v-on:filterChange='changeFilter'/>
+                <BoxSaerchGenere v-on:filterChange1='changeFilter1'/>
+                <BoxSaerchArtista v-on:filterChange2='changeFilter2'/>
+                <button @click="Reserch()" >Esegui ricerca</button>
             </div>
             <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
                 <CardLayout v-for='Card in ShowCard' v-bind:key="Card.id" 
@@ -39,9 +40,8 @@ export default {
     name: '',
     components: {
         CardLayout,
-        BoxSaerchArtista,
         BoxSaerchGenere,
-
+        BoxSaerchArtista,
     },
     props: {},
     data() {
@@ -49,6 +49,8 @@ export default {
             CardArrey:[],
             ShowCard:[],
             loaded:false,
+            KeywordGenere:'',
+            KeywordArtista:'',
         };
     },
     methods:{
@@ -58,22 +60,46 @@ export default {
                 this.ShowCard.push(element) 
             }
         },
-        changeFilter(selected) {
+        changeFilter1(selected1) {
+            this.KeywordGenere = selected1;
+        },
+        changeFilter2(selected2) {
+            this.KeywordArtista = selected2;
+        },
+        Reserch(){
             this.ShowCard = [] ;
             for (let i = 0; i < this.CardArrey.length; i++) {
                 const element = this.CardArrey[i];
-                if(element.author == selected || element.genre == selected){
+                if(element.genre == this.KeywordGenere && element.author == this.KeywordArtista){
                     this.ShowCard.push(element)
                 }
-                else if(selected == 'All') {
+                else if('' == this.KeywordGenere && element.author == this.KeywordArtista){
+                    this.ShowCard.push(element)
+                }
+                else if(element.genre == this.KeywordGenere && '' == this.KeywordArtista){
+                    this.ShowCard.push(element)
+                }
+                else if('All' == this.KeywordGenere && element.author == this.KeywordArtista){
+                    this.ShowCard.push(element)
+                }
+                else if(element.genre == this.KeywordGenere && 'All' == this.KeywordArtista){
                     this.ShowCard.push(element)
                 } 
+                else if('All' == this.KeywordGenere && 'All' ==  this.KeywordArtista){
+                    this.ShowCard.push(element)
+                }
+                else if('' ==  this.KeywordGenere && '' == this.KeywordArtista){
+                    this.ShowCard.push(element)
+                }     
+
             }
-        }
-    },
+        } 
+    }, 
     mounted() {
+
         setTimeout(() => { this.loaded = true; }, 700); //---tempo di caricamento finto
         setTimeout(this.Initial, 700); 
+
         axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then(myResp => {this.CardArrey = myResp.data.response;})

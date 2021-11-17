@@ -4,7 +4,7 @@
 
             <form>
                 <label class="text-white">Search for Type :</label>
-                <select v-model="selected" @change="showCD(selected)">
+                <select v-model="selected1" @change="showCD(selected1)">
                     <option value="All" select>All</option>
                     <option v-for="genere in GeneriArrey" :key='genere.id' :value="genere">{{genere}}</option>
                 </select>
@@ -36,7 +36,7 @@ export default {
         return {
             CardArreyChild:[],
             GeneriArrey:[],
-            selected: 'All',
+            selected1: 'All',
         };
     },
     methods:{
@@ -49,7 +49,7 @@ export default {
             }
         },
         showCD() {
-            this.$emit('filterChange',this.selected);
+            this.$emit('filterChange1',this.selected1);
         },  
     }, 
     mounted(){
