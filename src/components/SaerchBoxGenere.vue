@@ -3,7 +3,7 @@
         <div class="container">
 
             <form>
-                <label for="x">Choose a car:</label>
+                <label class="text-white">Search for Type :</label>
                 <select v-model="selected" @change="showCD(selected)">
                     <option value="All" select>All</option>
                     <option v-for="genere in GeneriArrey" :key='genere.id' :value="genere">{{genere}}</option>
@@ -63,7 +63,7 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/scss/variables.scss';
-input{
+select{
     @include layout-input-1;
 }
 </style>
