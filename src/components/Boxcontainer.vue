@@ -49,8 +49,8 @@ export default {
             CardArrey:[],
             ShowCard:[],
             loaded:false,
-            KeywordGenere:'',
-            KeywordArtista:'',
+            KeywordGenere:'All',
+            KeywordArtista:'All',
         };
     },
     methods:{
@@ -73,25 +73,15 @@ export default {
                 if(element.genre == this.KeywordGenere && element.author == this.KeywordArtista){
                     this.ShowCard.push(element)
                 }
-                else if('' == this.KeywordGenere && element.author == this.KeywordArtista){
-                    this.ShowCard.push(element)
-                }
-                else if(element.genre == this.KeywordGenere && '' == this.KeywordArtista){
-                    this.ShowCard.push(element)
-                }
                 else if('All' == this.KeywordGenere && element.author == this.KeywordArtista){
                     this.ShowCard.push(element)
                 }
                 else if(element.genre == this.KeywordGenere && 'All' == this.KeywordArtista){
                     this.ShowCard.push(element)
-                } 
-                else if('All' == this.KeywordGenere && 'All' ==  this.KeywordArtista){
-                    this.ShowCard = this.CardArrey;
                 }
-                else if('' ==  this.KeywordGenere && '' == this.KeywordArtista){
+                else if('All' ==  this.KeywordGenere && 'All' == this.KeywordArtista){
                     this.ShowCard = this.CardArrey;
                 }     
-
             }
         } 
     }, 
