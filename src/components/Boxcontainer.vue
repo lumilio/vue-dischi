@@ -4,7 +4,7 @@
             <div class="box-form container">
                 <BoxSaerchGenere v-on:filterChange1='changeFilter1'/>
                 <BoxSaerchArtista v-on:filterChange2='changeFilter2'/>
-                <button @click="Reserch()" >Esegui ricerca</button>
+                <button @click="Research()" >Esegui ricerca</button>
             </div>
             <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
                 <CardLayout v-for='Card in ShowCard' v-bind:key="Card.id" 
@@ -66,7 +66,7 @@ export default {
         changeFilter2(selected2) {
             this.KeywordArtista = selected2;
         },
-        Reserch(){
+        Research(){
             this.ShowCard = [] ;
             for (let i = 0; i < this.CardArrey.length; i++) {
                 const element = this.CardArrey[i];
@@ -86,10 +86,10 @@ export default {
                     this.ShowCard.push(element)
                 } 
                 else if('All' == this.KeywordGenere && 'All' ==  this.KeywordArtista){
-                    this.ShowCard.push(element)
+                    this.ShowCard = this.CardArrey;
                 }
                 else if('' ==  this.KeywordGenere && '' == this.KeywordArtista){
-                    this.ShowCard.push(element)
+                    this.ShowCard = this.CardArrey;
                 }     
 
             }
