@@ -2,8 +2,8 @@
     <div class="container-fluid d-flex justify-content-center">
         <div class="container d-flex align-items-center flex-column">
             <div class="box-form container">
-                <BoxSaerchArtista v-on:filterChange='changeFilter'/>
                 <BoxSaerchGenere v-on:filterChange='changeFilter'/>
+                <BoxSaerchArtista v-on:filterChange='changeFilter'/>
             </div>
             <div v-if='loaded == true' class="Cardbox">                                         <!-- per il tempo di caricamento reale : v-if='CardArrey.length == 10'-->
                 <CardLayout v-for='Card in ShowCard' v-bind:key="Card.id" 
@@ -52,34 +52,32 @@ export default {
         };
     },
     methods:{
+        Initial(){
+            for (let i = 0; i < this.CardArrey.length; i++) {
+                const element = this.CardArrey[i];
+                this.ShowCard.push(element) 
+            }
+        },
         changeFilter(selected) {
             this.ShowCard = [] ;
             for (let i = 0; i < this.CardArrey.length; i++) {
                 const element = this.CardArrey[i];
-                if(element.author == selected){
+                if(element.author == selected || element.genre == selected){
                     this.ShowCard.push(element)
                 }
                 else if(selected == 'All') {
                     this.ShowCard.push(element)
                 } 
             }
-/*             for (let i = 0; i < this.CardArrey.length; i++) {
-                const element = this.CardArrey[i];
-                if(element.author == selected){
-                    this.ShowCard.push(element)
-                }
-                else if(selected == 'All') {
-                    this.ShowCard.push(element)
-                } 
-            } */
         }
     },
     mounted() {
         setTimeout(() => { this.loaded = true; }, 700); //---tempo di caricamento finto
+        setTimeout(this.Initial, 700); 
         axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then(myResp => {this.CardArrey = myResp.data.response;})
-        .catch(e => {console.error(e, 'errore di caricamento');})
+        .catch(e => {console.error(e, 'errore di caricamento');})       
     },
 }
 </script>

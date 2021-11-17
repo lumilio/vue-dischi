@@ -4,8 +4,9 @@
 
             <form>
                 <label for="x">Choose a car:</label>
-                <select name="x" id="x">
-                    <option v-for="genere in GeneriArrey" :key='genere.id' value="Card">{{genere}}</option>
+                <select v-model="selected" @change="showCD(selected)">
+                    <option value="All" select>All</option>
+                    <option v-for="genere in GeneriArrey" :key='genere.id' :value="genere">{{genere}}</option>
                 </select>
             </form>
 
@@ -35,6 +36,7 @@ export default {
         return {
             CardArreyChild:[],
             GeneriArrey:[],
+            selected: 'All',
         };
     },
     methods:{
@@ -45,7 +47,10 @@ export default {
                     this.GeneriArrey.push(element.genre)
                 }
             }
-        }
+        },
+        showCD() {
+            this.$emit('filterChange',this.selected);
+        },  
     }, 
     mounted(){
         setTimeout(() => {this.CardArreyChild = this.$parent.$data.CardArrey}, 600);

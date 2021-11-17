@@ -5,7 +5,8 @@
             <form>
                 <label >Choose a car:</label>
                 <select v-model="selected" @change="showCD(selected)">
-                    <option v-for="Card in CardArreyChild" :key='Card.id' :value="Card.author"> {{Card.author}}</option>
+                    <option value="All" select>All</option>
+                    <option v-for="Card in CardArreyChild" :key='Card.id' :value="Card.author" > {{Card.author}}</option>
                 </select>
             </form>
 
@@ -34,7 +35,7 @@ export default {
     data(){
         return {
             CardArreyChild:[],
-            selected: 'All'
+            selected:'All',
         };
     },
     methods:{
